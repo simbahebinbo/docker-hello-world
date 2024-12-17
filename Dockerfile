@@ -1,10 +1,8 @@
 FROM busybox:latest
-ENV PORT=8000
-LABEL maintainer="Chris <c@crccheck.com>"
 
-ADD index.html /www/index.html
+ENV PORT=8888
 
-# EXPOSE $PORT
+ADD source/index.html /www/index.html
 
 HEALTHCHECK CMD nc -z localhost $PORT
 

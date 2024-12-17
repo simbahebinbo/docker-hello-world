@@ -1,51 +1,31 @@
-# Hello World
+### 使用方式
 
-This is a simple Docker image that just gives http responses on port 8000. It's
-small enough to fit on one floppy disk:
+* 构建镜像
 
-```bash
-$ docker images | grep hell
-REPOSITORY               TAG       IMAGE ID        CREATED          VIRTUAL SIZE
-crccheck/hello-world     latest    2b28c6ad8d1b    4 months ago     1.2MB
+```shell
+$ ./build-docker.sh
 ```
 
-I made this initially because there were lots of scenarios where I wanted a
-Docker container that speaks HTTP, but every guide used images that took
-seconds to download. Armed with a tiny Docker image, I could test things in a
-fresh environment in under a second. I like faster feedback loops.
+* 启动镜像
 
-**THANK YOU** to the surprisingly large number of contributors that have made
-this better for everyone over the years.
-
-## Sample Usage
-
-### Starting a web server on port 80
-
-```bash
-$ docker run -d --rm --name web-test -p 80:8000 crccheck/hello-world
+```shell
+$ ./start-docker.sh
 ```
 
-You can now interact with this as if it were a dumb web server:
+* 调试镜像
 
-```
-$ curl localhost
-<xmp>
-Hello World
-...snip...
+```shell
+$ ./debug-docker.sh
 ```
 
-```
-$ curl -I localhost
-HTTP/1.0 200 OK
+* 停止镜像
+
+```shell
+$ ./stop-docker.sh
 ```
 
-```
-$ curl -X POST localhost/super/secret
-<HTML><HEAD><TITLE>501 Not Implemented</TITLE></HEAD>
-...snip...
-```
+* 测试镜像
 
-```
-$ curl --write-out %{http_code} --silent --output /dev/null localhost
-200
+```shell
+$ ./test-docker.sh
 ```
